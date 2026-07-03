@@ -3,46 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <title>Clean Water Trivia</title>
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Inter font (brand-aligned) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
-<body id="container">
-  
+<body>
+
+<div id="container">
+
   <h1>Clean Water Trivia</h1>
-    <div id="status-bar">
+
+  <!-- Difficulty Select -->
+  <div id="difficulty-select">
+    <h2>Select Difficulty</h2>
+    <button class="difficulty-btn" data-mode="easy">Easy</button>
+    <button class="difficulty-btn" data-mode="medium">Medium</button>
+    <button class="difficulty-btn" data-mode="hard">Hard</button>
+    <button class="difficulty-btn" data-mode="hardcore">Hardcore</button>
+  </div>
+
+  <!-- Status Bar -->
+  <div id="status-bar">
     <div id="points">Points: 0</div>
     <div id="hearts">❤️❤️❤️</div>
   </div>
 
-
+  <!-- Level Select -->
   <div id="level-select"></div>
 
+  <!-- Game Screen -->
   <div id="game-screen" class="hidden">
     <h2 id="level-title"></h2>
     <p id="question"></p>
+
     <input id="answer-input" placeholder="Type your answer...">
+    <div id="multiple-choice" class="hidden"></div>
+
     <button id="submit-answer">Submit</button>
   </div>
 
+  <!-- End Screen -->
   <div id="end-screen" class="hidden">
     <h2>You completed all levels!</h2>
-    <p>Nearly 1 in 10 people worldwide lack access to clean water.  
-    Learn more or support the mission below.</p>
-    
+    <p>Clean water changes everything. Learn how you can help.</p>
+  </div>
 
-    <div id="cta-modal" class="modal hidden">
-      <div class="modal-content">
-        <h2>You Can Make a Real Impact</h2>
-        <button id="cta-btn">Visit charity: water to Learn More / Donate</button>
-          <a href="https://www.charitywater.org" target="_blank"></a>
-        <button id="close-modal" class="secondary">Close</button>
-      </div>
+  <!-- CTA Modal -->
+  <div id="cta-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>You Can Make a Real Impact</h2>
+      <p>Millions still lack access to clean water. Want to help?</p>
+
+      <button id="cta-btn">Visit charity: water</button>
+      <button id="close-modal" class="secondary">Close</button>
     </div>
   </div>
 
-  
-  <button id="reset-btn" class="secondary-btn">Reset Game</button>
+  <!-- Reset Button -->
+  <div style="text-align:center; margin-top:20px;">
+    <button id="reset-btn" class="secondary-btn">Reset Game</button>
+  </div>
 
-  <script src="script.js"></script>
+  <!-- Footer -->
+  <footer id="cw-footer">
+    <p>Learn more about charity: water</p>
+    <a href="https://www.charitywater.org" target="_blank">Official Website</a> |
+    <a href="https://www.charitywater.org/donate" target="_blank">Donate</a>
+  </footer>
+
+</div>
+
+<!-- Sound Effects -->
+<audio id="ding-sound" src="ding.mp3"></audio>
+<audio id="pop-sound" src="pop.mp3"></audio>
+
+<script src="game.js"></script>
 </body>
 </html>
