@@ -276,6 +276,7 @@ document.getElementById("cta-modal").onclick = (event) => {
 
 document.getElementById("cta-btn").onclick = () => {
   window.open("https://www.charitywater.org", "_blank");
+  document.getElementById("cta-modal").classList.add("hidden");
 };
 
 document.getElementById("close-modal").onclick = () => {
