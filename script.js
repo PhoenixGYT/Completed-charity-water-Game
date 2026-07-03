@@ -50,6 +50,8 @@ let milestones = {
   allLevels: false
 };
 
+let modalClosed = false;
+
 /* ---------------------------
    DOM ELEMENTS
 --------------------------- */
@@ -61,8 +63,6 @@ const levelTitle = document.getElementById("level-title");
 const questionText = document.getElementById("question");
 const answerInput = document.getElementById("answer-input");
 const multipleChoice = document.getElementById("multiple-choice");
-
-let currentLevel = null;
 
 /* ---------------------------
    STATUS BAR
@@ -120,7 +120,9 @@ function renderLevelSelect() {
     endScreen.classList.remove("hidden");
 
     setTimeout(() => {
-      document.getElementById("cta-modal").classList.remove("hidden");
+      if (!modalClosed) {
+        document.getElementById("cta-modal").classList.remove("hidden");
+      }
     }, 800);
 
     confetti({ particleCount: 200, spread: 100, origin: { y: 0.6 } });
@@ -240,10 +242,12 @@ function resetGameState() {
   hearts = difficultySettings[difficulty].hearts;
   progress = [];
   localStorage.removeItem("progress");
+  modalClosed = false;
 
   updateStatusBar();
   gameScreen.classList.add("hidden");
   endScreen.classList.add("hidden");
+  document.getElementById("cta-modal").classList.add("hidden");
   renderLevelSelect();
 }
 
@@ -251,6 +255,18 @@ document.getElementById("reset-btn").onclick = () => {
   if (confirm("Reset all progress?")) {
     resetGameState();
     alert("Game reset!");
+  }
+};
+
+document.getElementById("close-modal").onclick = () => {
+  modalClosed = true;
+  document.getElementById("cta-modal").classList.add("hidden");
+};
+
+document.getElementById("cta-modal").onclick = (event) => {
+  if (event.target === event.currentTarget) {
+    modalClosed = true;
+    document.getElementById("cta-modal").classList.add("hidden");
   }
 };
 
@@ -263,7 +279,25 @@ document.getElementById("cta-btn").onclick = () => {
 };
 
 document.getElementById("close-modal").onclick = () => {
-  document.getElementById("cta-modal").classList.add("hidden");
+  const modal = document.getElementById("cta-modal");
+  modal.classList.add("hidden");
+  modalClosed = true;
+};
+
+// Close modal when clicking outside the modal-content
+document.getElementById("cta-modal").onclick = (e) => {
+  if (e.target.id === "cta-modal") {
+    document.getElementById("cta-modal").classList.add("hidden");
+    modalClosed = true;
+  }
+};
+
+
+document.getElementById("cta-modal").onclick = (e) => {
+  if (e.target.id === "cta-modal") {
+    document.getElementById("cta-modal").classList.add("hidden");
+    modalClosed = true;
+  }
 };
 
 /* ---------------------------

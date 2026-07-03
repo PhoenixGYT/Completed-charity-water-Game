@@ -223,6 +223,11 @@ button:hover {
   animation: popIn 0.3s ease;
 }
 
+.secondary {
+  background: #ddd;
+  color: #333;
+}
+
 @keyframes popIn {
   from { transform: scale(0.8); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
@@ -257,5 +262,18 @@ button:hover {
   .level-btn {
     padding: 12px;
     font-size: 14px;
+  }
+
+  #game-screen, #end-screen {
+    padding: 16px;
+  }
+
+  input, button {
+    font-size: 14px;
+  }
+
+  .modal-content {
+    width: 90%;
+    padding: 18px;
   }
 }
