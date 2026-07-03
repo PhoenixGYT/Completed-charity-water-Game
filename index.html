@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Clean Water Trivia</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body id="container">
+  
+  <h1>Clean Water Trivia</h1>
+    <div id="status-bar">
+    <div id="points">Points: 0</div>
+    <div id="hearts">❤️❤️❤️</div>
+  </div>
+
+
+  <div id="level-select"></div>
+
+  <div id="game-screen" class="hidden">
+    <h2 id="level-title"></h2>
+    <p id="question"></p>
+    <input id="answer-input" placeholder="Type your answer...">
+    <button id="submit-answer">Submit</button>
+  </div>
+
+  <div id="end-screen" class="hidden">
+    <h2>You completed all levels!</h2>
+    <p>Nearly 1 in 10 people worldwide lack access to clean water.  
+    Learn more or support the mission below.</p>
+    
+
+    <div id="cta-modal" class="modal hidden">
+      <div class="modal-content">
+        <h2>You Can Make a Real Impact</h2>
+        <button id="cta-btn">Visit charity: water to Learn More / Donate</button>
+          <a href="https://www.charitywater.org" target="_blank"></a>
+        <button id="close-modal" class="secondary">Close</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <button id="reset-btn" class="secondary-btn">Reset Game</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,275 @@
+/* ------------------------------
+   GLOBAL STYLES
+------------------------------ */
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #9dd6ff, #c7eaff);
+  margin: 0;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #003b6f;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ------------------------------
+   LEVEL SELECT GRID
+------------------------------ */
+#level-select {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+/* Level buttons */
+.level-btn {
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-weight: 600;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.level-btn:hover {
+  transform: translateY(-3px);
+  background: #e8f6ff;
+}
+
+.level-btn.completed {
+  background: #4caf50;
+  color: white;
+}
+
+/* Staggered animation delays */
+.level-btn:nth-child(1) { animation-delay: 0.05s; }
+.level-btn:nth-child(2) { animation-delay: 0.10s; }
+.level-btn:nth-child(3) { animation-delay: 0.15s; }
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------
+   GAME & END SCREENS
+------------------------------ */
+#game-screen,
+#end-screen {
+  margin-top: 25px;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ------------------------------
+   INPUTS & BUTTONS
+------------------------------ */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #0077cc;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #005fa3;
+}
+
+/* ------------------------------
+   FEEDBACK ANIMATIONS
+------------------------------ */
+.correct-flash {
+  animation: correctFlash 0.6s ease;
+}
+
+@keyframes correctFlash {
+  0% { background-color: #4caf50; }
+  100% { background-color: transparent; }
+}
+
+.shake {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.secondary-btn {
+  background: #ddd;
+  color: #333;
+}
+
+.secondary-btn:hover {
+  background: #c5c5c5;
+}
+
+#status-bar {
+  display: flex;
+  justify-content: space-between;
+  background: #FFF7E1; /* soft cream from palette */
+  border: 2px solid #FFC907; /* Jerry Can yellow */
+  padding: 12px 16px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #003366; /* deep blue */
+}
+
+#points {
+  font-size: 18px;
+}
+
+#hearts {
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+
+/* ------------------------------
+   RESPONSIVE UI
+------------------------------ */
+
+/* Tablets & small laptops */
+@media (max-width: 900px) {
+  body {
+    padding: 20px;
+  }
+
+  #container {
+    max-width: 500px;
+  }
+
+  #status-bar {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  #level-select {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 600px) {
+  body {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  #container {
+    max-width: 100%;
+  }
+
+  #status-bar {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  #level-select {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .level-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  #game-screen, #end-screen {
+    padding: 16px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 400px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  #level-select {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .level-btn {
+    padding: 10px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    padding: 18px;
+  }
+
+  .modal-content h2 {
+    font-size: 20px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
+  }
+}
